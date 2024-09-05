@@ -9,10 +9,10 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://your-domain.com/openapi.json",
+    "url": "https://stondy-vietsub-gpt.vercel.app/openapi.json",
     "is_user_authenticated": false
   },
-  "logo_url": "https://your-domain.com/logo.png",
+  "logo_url": "https://stondy-vietsub-gpt.vercel.app/logo.png",
   "contact_email": "you@example.com",
-  "legal_info_url": "https://your-domain.com/legal"
+  "legal_info_url": "https://stondy-vietsub-gpt.vercel.app/legal"
 }
