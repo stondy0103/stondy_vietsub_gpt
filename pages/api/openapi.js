@@ -14,50 +14,22 @@ export default function handler(req, res) {
             }
         ],
         paths: {
-            "/api/movies/{slug}": {
-                get: {
-                    summary: "Lấy tên Việt hóa cho một phim cụ thể dựa trên slug",
-                    parameters: [
-                        {
-                            name: "slug",
-                            in: "path",
-                            required: true,
-                            description: "Slug của phim",
-                            schema: {
-                                type: "string"
-                            }
-                        }
-                    ],
-                    responses: {
+            "/movies": {
+                "get": {
+                    "description": "Returns all pets from the system that the user has access to",
+                    "responses": {
                         "200": {
-                            description: "Phản hồi thành công",
-                            content: {
+                            "description": "A list of pets.",
+                            "content": {
                                 "application/json": {
-                                    schema: {
-                                        type: "object",
-                                        properties: {
-                                            slug: { type: "string" },
-                                            title: { type: "string" },
-                                            genre: { type: "string" },
-                                            description: { type: "string" },
-                                            vietsub_names: {
-                                                type: "array",
-                                                items: {
-                                                    type: "object",
-                                                    properties: {
-                                                        origin_char_name: { type: "string" },
-                                                        vietsub_char_name: { type: "string" },
-                                                        replace_char_vietsub_name: { type: "string", nullable: true }
-                                                    }
-                                                }
-                                            }
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/pet"
                                         }
                                     }
                                 }
                             }
-                        },
-                        "404": {
-                            description: "Phim không tìm thấy hoặc không có tên Việt hóa"
                         }
                     }
                 }
