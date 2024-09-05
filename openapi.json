@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://your-domain.com"
+      "url": "https://stondy-vietsub-gpt.vercel.app"
     }
   ],
   "paths": {
