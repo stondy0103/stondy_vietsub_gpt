@@ -10,7 +10,7 @@ export default function handler(req, res) {
         },
         servers: [
             {
-                url: "https://stondy-vietsub-gpt.vercel.app/api/openapi.json"
+                url: "https://stondy-vietsub-gpt.vercel.app/api/openapi"
             }
         ],
         paths: {
