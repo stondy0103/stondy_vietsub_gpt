@@ -12,12 +12,9 @@ export default function handler(req, res) {
         },
         "api": {
             "type": "openapi",
-            "url": "https://stondy-vietsub-gpt.vercel.app/openapi",
+            "url": "https://stondy-vietsub-gpt.vercel.app/api/openapi",
             "is_user_authenticated": false
         },
-        "logo_url": "https://stondy-vietsub-gpt.vercel.app/logo.png",
-        "contact_email": "you@example.com",
-        "legal_info_url": "https://stondy-vietsub-gpt.vercel.app/legal"
     }
 
     // Trả về dữ liệu dưới dạng JSON với định dạng mong muốn
