@@ -12,7 +12,7 @@ export default function handler(req, res) {
         },
         "api": {
             "type": "openapi",
-            "url": "https://stondy-vietsub-gpt.vercel.app/openapi.json",
+            "url": "https://stondy-vietsub-gpt.vercel.app/openapi",
             "is_user_authenticated": false
         },
         "logo_url": "https://stondy-vietsub-gpt.vercel.app/logo.png",
