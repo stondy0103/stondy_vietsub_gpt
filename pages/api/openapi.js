@@ -2,31 +2,90 @@
 export default function handler(req, res) {
     // JSON chứa định nghĩa OpenAPI
     const openApiDefinition = {
-        openapi: "3.0.0",
-        info: {
-            title: "Movie Vietsub API",
-            version: "1.0.0",
-            description: "API để lấy thông tin phim và tên nhân vật Việt hóa dựa trên slug."
+        "openapi": "3.1.0",
+        "info": {
+            "title": "Movie Vietsub API",
+            "description": "API để lấy thông tin phim và tên nhân vật Việt hóa dựa trên slug. Không yêu cầu xác thực.",
+            "version": "1.0.0"
         },
-        servers: [
+        "servers": [
             {
-                url: "https://stondy-vietsub-gpt.vercel.app/api/openapi"
+                "url": "https://stondy-vietsub-gpt.vercel.app"
             }
         ],
-        paths: {
-            "/movies": {
+        "paths": {
+            "/api/movies/{slug}": {
                 "get": {
-                    "description": "Returns all pets from the system that the user has access to",
+                    "summary": "Lấy tên Việt hóa cho một phim cụ thể dựa trên slug",
+                    "description": "API này trả về thông tin về phim và tên nhân vật Việt hóa dựa trên slug của phim.",
+                    "operationId": "getMovieVietsubBySlug",
+                    "parameters": [
+                        {
+                            "name": "slug",
+                            "in": "path",
+                            "required": true,
+                            "description": "Slug của phim",
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    ],
                     "responses": {
                         "200": {
-                            "description": "A list of pets.",
+                            "description": "Thông tin phim và tên Việt hóa",
                             "content": {
                                 "application/json": {
                                     "schema": {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "#/components/schemas/pet"
-                                        }
+                                        "$ref": "#/components/schemas/MovieResponse"
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Phim không tìm thấy hoặc không có thông tin về tên Việt hóa"
+                        }
+                    }
+                }
+            }
+        },
+        "components": {
+            "schemas": {
+                "MovieResponse": {
+                    "type": "object",
+                    "properties": {
+                        "slug": {
+                            "type": "string",
+                            "description": "Slug của phim"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "Tiêu đề của phim"
+                        },
+                        "genre": {
+                            "type": "string",
+                            "description": "Thể loại phim"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Mô tả phim"
+                        },
+                        "vietsub_names": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "origin_char_name": {
+                                        "type": "string",
+                                        "description": "Tên nhân vật gốc"
+                                    },
+                                    "vietsub_char_name": {
+                                        "type": "string",
+                                        "description": "Tên nhân vật Việt hóa"
+                                    },
+                                    "replace_char_vietsub_name": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "description": "Tên thay thế cho tên Việt hóa"
                                     }
                                 }
                             }
