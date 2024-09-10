@@ -26,6 +26,7 @@ export default async function handler(req, res) {
             title: movie.title,
             genre: movie.genre,
             description: movie.description,
+            source: movie.source,
             vietsub_names: vietsubNames.map((name) => ({
                 origin_char_name: name.origin_char_name,
                 vietsub_char_name: name.vietsub_char_name,
