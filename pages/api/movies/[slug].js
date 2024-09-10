@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         const {slug} = req.query;
         const {data: movie, error: movieError} = await supabase
             .from('movie')
-            .select('id, title, genre, description, slug')
+            .select('id, title, genre, description, slug, source')
             .eq('slug', slug)
             .single();
         if (movieError || !movie) {
